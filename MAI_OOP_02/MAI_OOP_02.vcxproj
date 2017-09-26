@@ -147,6 +147,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Square.h" />
+    <ClInclude Include="TList.h" />
+    <ClInclude Include="TListItem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="TList.cpp" />
+    <ClCompile Include="TListItem.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
