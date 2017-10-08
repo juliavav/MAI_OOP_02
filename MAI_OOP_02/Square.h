@@ -12,6 +12,7 @@ public:
 	Square& operator++();
 	double SquareF();
 	friend Square operator+(const Square& left, const Square& right);
+	friend bool operator==(const Square& left, const Square& right);
 
 	friend std::ostream& operator<<(std::ostream& os, const Square& obj);
 	friend std::istream& operator>>(std::istream& is, Square& obj);

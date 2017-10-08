@@ -28,12 +28,16 @@ TListItem* TListItem::GetNext() {
 }
 
 TListItem::~TListItem() {
-	std::cout << "List item: deleted" << std::endl;
+	std::cout << "List item: deleted"<< std::endl;
 	delete next;
 
 }
 
 std::ostream& operator<<(std::ostream& os, const TListItem& obj) {
-	os << "[" << obj.square << "]" << std::endl;
+	os << "[" << obj.square << "]";//<< std::endl;
 	return os;
+}
+
+bool operator==(TListItem & first, TListItem &last){
+	return first.square == last.square;
 }
