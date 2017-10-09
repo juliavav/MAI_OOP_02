@@ -44,16 +44,25 @@ void TList::addLast(Square &&square) {
 void TList::insert(Square &&squareNext, Square &&square) {
 	TListItem *other = new TListItem(square);
 	TListItem *iter = this->first;
-	while (!(iter->GetSquare() == squareNext)&& (iter->GetNext() != nullptr)) {
-		iter=iter->GetNext();
-	}
-
-	if (iter->GetNext() == nullptr) {
-		std::cout << "5.There is not such element in this list." << std::endl;
-	}
-	else {
+	if (iter->GetSquare() == squareNext) {
 		other->SetNext(iter->GetNext());
 		iter->SetNext(other);
+		//other->SetNext(nullptr);
+		std::cout << "Square is added." << std::endl;
+	}
+	else {
+		while (!(iter->GetSquare() == squareNext) && (iter->GetNext() != nullptr)) {
+			iter = iter->GetNext();
+		}
+
+		if ((iter->GetNext() == nullptr)&&(!(iter->GetSquare() == squareNext))) {
+			std::cout << "There is not such element in this list." << std::endl;
+		}
+		else {
+			other->SetNext(iter->GetNext());
+			iter->SetNext(other);
+			std::cout << "Square is added." << std::endl;
+		}
 	}
 }
 bool TList::empty() {
@@ -70,22 +79,29 @@ Square TList::getElement(int n){
 void TList::delElement(Square && square)//пофиксить!!!!!!!!!!!!!!!!!!!!!
 {
 	TListItem* iter = this->first;
-	if (iter != nullptr&&iter->GetNext() != nullptr) {
-		while (!(iter->GetNext()->GetSquare() == square) && !(iter->GetNext() == nullptr)) {
-			iter = iter->GetNext();
-		}
-		if (!(iter->GetNext() == nullptr)) {
-			iter->SetNext(iter->GetNext()->GetNext());
+	if (iter != nullptr) {
+		if (iter->GetSquare() == square) {
+			first = nullptr;
+			std::cout << "Square is deleted." << std::endl;
 		}
 		else {
-			std::cout << "3. No such element!" << std::endl;
+			if (!(iter->GetNext() == nullptr)) {
+				while (!(iter->GetNext() == nullptr) && !(iter->GetNext()->GetSquare() == square)) {
+					iter = iter->GetNext();
+				}
+				if (!(iter->GetNext() == nullptr)) {
+					iter->SetNext(iter->GetNext()->GetNext());
+					std::cout << "Square is deleted." << std::endl;
+				}
+				else {
+					std::cout << "There is no such element!" << std::endl;
+				}
+			}
+			else {
+				std::cout << "There is no such element!" << std::endl;
+			}
 		}
 	}
-	else {
-
-		std::cout << "3. No such element!" << std::endl;
-	}
-
 }
 void TList::eraseList() {
 	first = nullptr;

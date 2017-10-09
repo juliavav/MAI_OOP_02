@@ -4,13 +4,13 @@
 TListItem::TListItem(const Square& square) {
 	this->square = square;
 	this->next = nullptr;
-	std::cout << "List item: created" << std::endl;
+	//std::cout << "List item: created" << std::endl;
 }
 
 TListItem::TListItem(const TListItem& orig) {
 	this->square = orig.square;
 	this->next = orig.next;
-	std::cout << "List item: copied" << std::endl;
+	//std::cout << "List item: copied" << std::endl;
 }
 
 TListItem* TListItem::SetNext(TListItem* next) {
